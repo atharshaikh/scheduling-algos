@@ -33,7 +33,7 @@ def get_response_time(task_list: List[Task]) -> None:
         task.response_time = task.first_cpu_time - task.arrival_time
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     times = ((0, 5), (1, 3), (2, 4), (4, 1))
     tasks = [Task(arrival_time=i, burst_time=j, time_left=j) for i, j in times]
     tasks.sort(key=lambda x: x.arrival_time)

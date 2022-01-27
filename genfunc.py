@@ -10,7 +10,9 @@ from task import Task
 
 
 def generate_tasks() -> List[Task]:
-    choice = int(input("Enter 1 to manually enter tasks, or 2 to generate tasks automatically\n"))
+    choice = int(
+        input("Enter 1 to manually enter tasks, or 2 to generate tasks automatically\n")
+    )
     if choice not in [1, 2]:
         print("Invalid option")
         sys.exit(-1)
@@ -35,7 +37,10 @@ def random_tasks() -> List[Task]:
         print("Maximum value < minimum value")
         sys.exit(-1)
     number = int(input("Enter total number of tasks\n"))
-    times = [(randint(arrival_low, arrival_high), randint(burst_low, burst_high)) for _ in range(number)]
+    times = [
+        (randint(arrival_low, arrival_high), randint(burst_low, burst_high))
+        for _ in range(number)
+    ]
     return get_tasks_from_times(times)
 
 
@@ -81,8 +86,7 @@ def get_average_wait_time(task_list: List[Task]):
 
 
 def show_table(task_list: List[Task], algo: str) -> None:
-    table = Table(title=f"Implementation of {algo}",
-                  box=box.ROUNDED)
+    table = Table(title=f"Implementation of {algo}", box=box.ROUNDED)
     table.add_column("Task Number")
     table.add_column("Arrival Time")
     table.add_column("Burst Time")
