@@ -55,7 +55,7 @@ def user_tasks() -> List[Task]:
 
 
 def get_tasks_from_times(times):
-    task_list = [Task(arrival_time=i, burst_time=j) for i, j in times]
+    task_list = [Task(arrival_time=i, burst_time=j, time_left=j) for i, j in times]
     task_list.sort(key=lambda x: x.arrival_time)
     return task_list
 
@@ -99,7 +99,7 @@ def show_table(task_list: List[Task], algo: str) -> None:
             str(task.completion_time),
             str(task.turn_around_time),
             str(task.waiting_time),
-            str(task.response_time) if task.response_time != 0 else "NA",
+            str(task.response_time),
         )
 
     console = Console()
