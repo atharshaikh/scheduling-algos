@@ -1,6 +1,5 @@
 from typing import List
 
-from genfunc import show_table, get_waiting_time, get_turnaround_time
 from task import Task
 
 
@@ -31,14 +30,3 @@ def get_completion_time(task_list: List[Task]) -> None:
 def get_response_time(task_list: List[Task]) -> None:
     for task in task_list:
         task.response_time = task.first_cpu_time - task.arrival_time
-
-
-if __name__ == "__main__":
-    times = ((0, 5), (1, 3), (2, 4), (4, 1))
-    tasks = [Task(arrival_time=i, burst_time=j, time_left=j) for i, j in times]
-    tasks.sort(key=lambda x: x.arrival_time)
-    get_completion_time(tasks)
-    get_turnaround_time(tasks)
-    get_waiting_time(tasks)
-    get_response_time(tasks)
-    show_table(tasks, "SJF-P")

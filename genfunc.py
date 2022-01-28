@@ -85,6 +85,11 @@ def get_average_wait_time(task_list: List[Task]):
     return avg_wt
 
 
+def get_average_response_time(task_list: List[Task]):
+    avg_rt = sum([i.response_time for i in task_list]) / len(task_list)
+    return avg_rt
+
+
 def show_table(task_list: List[Task], algo: str) -> None:
     table = Table(title=f"Implementation of {algo}", box=box.ROUNDED)
     table.add_column("Task Number")
@@ -110,3 +115,4 @@ def show_table(task_list: List[Task], algo: str) -> None:
     console.print(table)
     print(f"Average Turn Around Time: {get_average_turnaround_time(task_list)}")
     print(f"Average Waiting Time: {get_average_wait_time(task_list)}")
+    print(f"Average Response Time: {get_average_response_time(task_list)}")
